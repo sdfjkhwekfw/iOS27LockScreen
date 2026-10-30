@@ -1,38 +1,69 @@
 name: Build iOS27LockScreen
 
-on: push
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+
+permissions:
+  contents: write
+
+env:
+  HOMEBREW_NO_AUTO_UPDATE: 1
+  HOMEBREW_NO_INSTALLED_DEPENDENTS_CHECK: 1
+  THEOS: ${{ github.workspace }}/theos-roothide
 
 jobs:
   build:
-    runs-on: macos-latest
-    env:
-      THEOS: /Users/runner/work/theos/theos
+    runs-on: macos-14
+    outputs:
+      package_version: ${{ steps.bump.outputs.package_version }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: '15.4'
 
-      - name: Setup Theos
+      - uses: actions/checkout@v4
+
+      - name: Setup Environment
         run: |
-          git clone --depth=1 https://github.com/theos/theos.git $THEOS
-          cd $THEOS
-          git submodule update --init --recursive
+          echo "$THEOS/bin" >> "$GITHUB_PATH"
+          echo "THEOS=$THEOS" >> "$GITHUB_ENV"
+          echo "THEOS_IGNORE_PARALLEL_BUILDING_NOTICE=yes" >> "$HOME/.theosrc"
+
+      - id: bump
+        run: |
+          VERSION="1.0.0-${{ github.run_number }}"
+          sed -i '' "s/^Version: .*/Version: ${VERSION}/" control
+          echo "package_version=${VERSION}" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/checkout@v4
+        with:
+          repository: roothide/theos
+          path: theos-roothide
+          submodules: recursive
 
       - name: Install SDK
         run: |
-          cd $THEOS/sdks
-          curl -L -o sdks.zip https://github.com/theos/sdks/archive/master.zip
-          unzip -q sdks.zip
-          mv sdks-master/iPhoneOS14.5.sdk .
-          rm -rf sdks.zip sdks-master
+          mkdir -p "$THEOS/sdks"
+          STAGE="$(mktemp -d)"; trap 'rm -rf "$STAGE"' EXIT
+          git clone --depth 1 --filter=blob:none --sparse https://github.com/theos/sdks.git "$STAGE/sdks"
+          git -C "$STAGE/sdks" sparse-checkout set iPhoneOS16.5.sdk
+          cp -R "$STAGE/sdks/iPhoneOS16.5.sdk" "$THEOS/sdks/"
+
+      - name: Install deps
+        run: |
+          brew install ldid dpkg xz
+          echo "$(brew --prefix)/bin" >> "$GITHUB_PATH"
 
       - name: Build
         run: |
-          export THEOS=/Users/runner/work/theos/theos
           make clean THEOS_PACKAGE_SCHEME=rootless
           make package THEOS_PACKAGE_SCHEME=rootless FINALPACKAGE=1
+          find ./packages -name "*.deb"
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v4
         with:
           name: packages-rootless
-          path: packages/
+          path: ./packages/*.deb
+          if-no-files-found: error
