@@ -56,7 +56,7 @@ static void setupLabel(UILabel **label, UIView *parent, NSInteger tag, NSDiction
     CGFloat y = readFloat(prefs, [NSString stringWithFormat:@"%@Y", prefix], defaultY);
     CGFloat size = readFloat(prefs, [NSString stringWithFormat:@"%@Size", prefix], defaultSize);
     NSInteger weight = (NSInteger)readFloat(prefs, [NSString stringWithFormat:@"%@Weight", prefix], defaultWeight);
-    UIColor *color = readColor(prefs, [NSString stringWithFormat:@"%@Color", prefix], 0, 0, 0);
+    UIColor *color = readColor(prefs, [NSString stringWithFormat:@"%@Color", prefix], 255, 255, 255);
     
     (*label).frame = CGRectMake(x, y, 400, size + 20);
     (*label).font = [UIFont systemFontOfSize:size weight:fontWeightFromInt(weight)];
