@@ -1,0 +1,36 @@
+name: Build iOS27LockScreen
+
+on: push
+
+jobs:
+  build:
+    runs-on: macos-latest
+    env:
+      THEOS: /Users/runner/work/theos/theos
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Theos
+        run: |
+          git clone --depth=1 https://github.com/theos/theos.git $THEOS
+          cd $THEOS
+          git submodule update --init --recursive
+
+      - name: Install SDK
+        run: |
+          cd $THEOS/sdks
+          wget -q https://github.com/xyx5858/ios-sdk/raw/main/iPhoneOS14.4.sdk.tar.gz
+          tar xf iPhoneOS14.4.sdk.tar.gz
+
+      - name: Build
+        run: |
+          export THEOS=/Users/runner/work/theos/theos
+          make clean THEOS_PACKAGE_SCHEME=rootless
+          make package THEOS_PACKAGE_SCHEME=rootless FINALPACKAGE=1
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: packages-rootless
+          path: packages/

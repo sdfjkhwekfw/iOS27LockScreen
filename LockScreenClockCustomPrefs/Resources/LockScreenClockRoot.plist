@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>items</key>
+	<array>
+		<!-- 时间设置组 -->
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>时间设置</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>key</key>
+			<string>TimeX</string>
+			<key>label</key>
+			<string>时间X位置 (pt)</string>
+			<key>default</key>
+			<real>50</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>key</key>
+			<string>TimeY</string>
+			<key>label</key>
+			<string>时间Y位置 (pt)</string>
+			<key>default</key>
+			<real>100</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>key</key>
+			<string>TimeSize</string>
+			<key>label</key>
+			<string>时间字号</string>
+			<key>default</key>
+			<real>60</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>key</key>
+			<string>TimeWeight</string>
+			<key>label</key>
+			<string>时间粗细 (0-8)</string>
+			<key>default</key>
+			<real>6</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>时间颜色 (RGB 0-255)</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>key</key>
+			<string>TimeColorR</string>
+			<key>label</key>
+			<string>红 R</string>
+			<key>default</key>
+			<real>0</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>key</key>
+			<string>TimeColorG</string>
+			<key>label</key>
+			<string>绿 G</string>
+			<key>default</key>
+			<real>0</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>key</key>
+			<string>TimeColorB</string>
+			<key>label</key>
+			<string>蓝 B</string>
+			<key>default</key>
+			<real>0</real>
+		</dict>
+		
+		<!-- 日期设置组 -->
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>日期设置</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>key</key>
+			<string>DateX</string>
+			<key>label</key>
+			<string>日期X位置 (pt)</string>
+			<key>default</key>
+			<real>180</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>key</key>
+			<string>DateY</string>
+			<key>label</key>
+			<string>日期Y位置 (pt)</string>
+			<key>default</key>
+			<real>115</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>key</key>
+			<string>DateSize</string>
+			<key>label</key>
+			<string>日期字号</string>
+			<key>default</key>
+			<real>30</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>key</key>
+			<string>DateWeight</string>
+			<key>label</key>
+			<string>日期粗细 (0-8)</string>
+			<key>default</key>
+			<real>5</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>日期颜色 (RGB 0-255)</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>key</key>
+			<string>DateColorR</string>
+			<key>label</key>
+			<string>红 R</string>
+			<key>default</key>
+			<real>0</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>key</key>
+			<string>DateColorG</string>
+			<key>label</key>
+			<string>绿 G</string>
+			<key>default</key>
+			<real>0</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>key</key>
+			<string>DateColorB</string>
+			<key>label</key>
+			<string>蓝 B</string>
+			<key>default</key>
+			<real>0</real>
+		</dict>
+		
+		<!-- 星期设置组 -->
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>星期设置</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>key</key>
+			<string>WeekdayX</string>
+			<key>label</key>
+			<string>星期X位置 (pt)</string>
+			<key>default</key>
+			<real>350</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>key</key>
+			<string>WeekdayY</string>
+			<key>label</key>
+			<string>星期Y位置 (pt)</string>
+			<key>default</key>
+			<real>115</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>key</key>
+			<string>WeekdaySize</string>
+			<key>label</key>
+			<string>星期字号</string>
+			<key>default</key>
+			<real>30</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>key</key>
+			<string>WeekdayWeight</string>
+			<key>label</key>
+			<string>星期粗细 (0-8)</string>
+			<key>default</key>
+			<real>5</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSGroupCell</string>
+			<key>label</key>
+			<string>星期颜色 (RGB 0-255)</string>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>key</key>
+			<string>WeekdayColorR</string>
+			<key>label</key>
+			<string>红 R</string>
+			<key>default</key>
+			<real>0</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>key</key>
+			<string>WeekdayColorG</string>
+			<key>label</key>
+			<string>绿 G</string>
+			<key>default</key>
+			<real>0</real>
+		</dict>
+		<dict>
+			<key>cell</key>
+			<string>PSEditTextCell</string>
+			<key>key</key>
+			<string>WeekdayColorB</string>
+			<key>label</key>
+			<string>蓝 B</string>
+			<key>default</key>
+			<real>0</real>
+		</dict>
+	</array>
+	<key>title</key>
+	<string>iOS27锁屏时钟</string>
+</dict>
+</plist>
