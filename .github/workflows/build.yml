@@ -13,8 +13,17 @@ jobs:
 
       - name: Setup Theos
         run: |
-          export THEOS=/Users/runner/work/theos/theos
-          bash -c "$(curl -fsSL https://raw.githubusercontent.com/theos/theos/master/bin/install-theos)" -i $THEOS
+          git clone --depth=1 https://github.com/theos/theos.git $THEOS
+          cd $THEOS
+          git submodule update --init --recursive
+
+      - name: Install SDK
+        run: |
+          cd $THEOS/sdks
+          curl -L -o sdks.zip https://github.com/theos/sdks/archive/master.zip
+          unzip -q sdks.zip
+          mv sdks-master/iPhoneOS14.5.sdk .
+          rm -rf sdks.zip sdks-master
 
       - name: Build
         run: |
