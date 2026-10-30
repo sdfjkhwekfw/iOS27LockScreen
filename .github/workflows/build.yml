@@ -20,7 +20,7 @@ jobs:
       - name: Install SDK
         run: |
           cd $THEOS/sdks
-          wget -q https://github.com/xyx5858/ios-sdk/raw/main/iPhoneOS14.4.sdk.tar.gz
+          curl -L -o iPhoneOS14.4.sdk.tar.gz https://github.com/xyx5858/ios-sdk/raw/main/iPhoneOS14.4.sdk.tar.gz
           tar xf iPhoneOS14.4.sdk.tar.gz
 
       - name: Build
