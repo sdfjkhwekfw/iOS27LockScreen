@@ -1,0 +1,9 @@
+Package: com.yourname.lockscreenclock
+Name: iOS27LockScreen
+Version: 1.0.0
+Architecture: iphoneos-arm64
+Description: Custom lock screen clock with time, date, weekday separate settings
+Maintainer: yourname
+Author: yourname
+Section: Tweaks
+Depends: mobilesubstrate

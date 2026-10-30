@@ -1,0 +1,6 @@
+{
+  "filter": {
+    "FollowsBuckets": 1,
+    "Bundles": ["com.apple.springboard"]
+  }
+}
