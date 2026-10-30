@@ -13,17 +13,8 @@ jobs:
 
       - name: Setup Theos
         run: |
-          git clone --depth=1 https://github.com/theos/theos.git $THEOS
-          cd $THEOS
-          git submodule update --init --recursive
-
-      - name: Install SDK
-        run: |
-          cd $THEOS/sdks
-          curl -LO https://github.com/theos/sdks/archive/master.zip
-          unzip -q master.zip
-          mv sdks-master/*.sdk .
-          rm -rf master.zip sdks-master
+          export THEOS=/Users/runner/work/theos/theos
+          bash -c "$(curl -fsSL https://raw.githubusercontent.com/theos/theos/master/bin/install-theos)" -i $THEOS
 
       - name: Build
         run: |
