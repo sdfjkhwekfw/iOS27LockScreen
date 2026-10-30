@@ -10,7 +10,7 @@ include $(THEOS)/makefiles/common.mk
 include $(THEOS_MAKE_PATH)/tweak.mk
 
 TWEAK_NAME = iOS27LockScreen
-iOS27LockScreen_FILES = iOS27LockScreen.xm
+iOS27LockScreen_FILES = $(wildcard Hooks/*.xm)
 iOS27LockScreen_CFLAGS = -fobjc-arc
 iOS27LockScreen_FRAMEWORKS = UIKit Foundation CoreFoundation
 iOS27LockScreen_LIBRARIES = substrate
